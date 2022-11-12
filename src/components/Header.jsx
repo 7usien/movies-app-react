@@ -8,12 +8,16 @@ import avatar from '../images/avatar.png';
 
 const Header = () => {
  return (
-  <Box component='header' id='header'>
+  <Box
+   sx={{ backgroundColor: 'background.header' }}
+   component='header'
+   id='header'
+  >
    <Container>
     <Grid container justifyContent='space-between' alignItems='center'>
      <Grid item>
       <Link to='/'>
-       <Typography component='p' variant='h4'>
+       <Typography fontWeight={'bold'} component='p' variant='h4'>
         Movie APP
        </Typography>
       </Link>

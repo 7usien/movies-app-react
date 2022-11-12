@@ -5,7 +5,7 @@ const SwitchTheme = () => {
  return (
   <>
    <FormGroup>
-    <FormControlLabel control={<Switch defaultChecked />} label='Theme mode' />
+    <FormControlLabel control={<Switch />} label='Theme mode' />
    </FormGroup>
   </>
  );
