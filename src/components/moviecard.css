@@ -1,0 +1,12 @@
+.card-content {
+
+ opacity: 0;
+ transform: translateY(100px);
+
+}
+
+.card:hover .card-content {
+ opacity: 1;
+ transform: translateY(0px);
+ transition: all .2s;
+}

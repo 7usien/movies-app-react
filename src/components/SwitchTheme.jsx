@@ -1,11 +1,14 @@
 import React from 'react';
 import { FormGroup, FormControlLabel, Switch } from '@mui/material';
 
-const SwitchTheme = () => {
+const SwitchTheme = ({ toggleTheme }) => {
  return (
   <>
    <FormGroup>
-    <FormControlLabel control={<Switch />} label='Theme mode' />
+    <FormControlLabel
+     control={<Switch onChange={toggleTheme} />}
+     label='Theme mode'
+    />
    </FormGroup>
   </>
  );
