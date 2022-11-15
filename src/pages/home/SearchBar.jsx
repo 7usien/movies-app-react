@@ -1,7 +1,7 @@
 import { TextField, Box } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 
-const SearchBar = () => {
+const SearchBar = ({ searchInput, setSearchInput }) => {
  return (
   <Box
    sx={{
@@ -12,6 +12,10 @@ const SearchBar = () => {
   >
    <SearchIcon fontSize='large' sx={{ marginRight: '5px' }} />
    <TextField
+    value={searchInput}
+    onChange={(e) => {
+     setSearchInput(e.target.value);
+    }}
     fullWidth
     id='standard-basic'
     label='search'

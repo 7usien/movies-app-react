@@ -9,12 +9,18 @@ import {
 } from '@mui/material';
 import React from 'react';
 import shadows from '@mui/material/styles/shadows';
+import { useNavigate } from 'react-router-dom';
+
 const MovieCard = ({ movieInfo }) => {
  const { Title, Year, imdbID, Type, Poster } = movieInfo;
+ const navigate = useNavigate();
+ const cardHandler = () => {
+  setTimeout(() => navigate(`/${imdbID}`), 500);
+ };
 
  return (
   <>
-   <CardActionArea className='card'>
+   <CardActionArea className='card' onClick={cardHandler}>
     <Card
      sx={{
       position: 'relative',

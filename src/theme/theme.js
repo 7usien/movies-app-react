@@ -63,7 +63,7 @@ export const lightTheme = createTheme({
    color: '#000',
   },
   cardContent: {
-   background: 'rgba(255,255,255,0.7)',
+   background: 'rgba(255,255,255,0.85)',
   },
  },
 });

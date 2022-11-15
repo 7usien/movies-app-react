@@ -9,7 +9,7 @@ import avatar from '../images/avatar.png';
 const Header = () => {
  return (
   <Box
-   sx={{ backgroundColor: 'background.header', color: 'text.color' }}
+   sx={{ backgroundColor: 'background.header', color: 'text.color', zIndex: 8 }}
    component='header'
    id='header'
   >
