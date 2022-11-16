@@ -15,7 +15,7 @@ const MovieCard = ({ movieInfo }) => {
  const { Title, Year, imdbID, Type, Poster } = movieInfo;
  const navigate = useNavigate();
  const cardHandler = () => {
-  setTimeout(() => navigate(`/${imdbID}`), 500);
+  setTimeout(() => navigate(`/${imdbID}/movie`), 500);
  };
 
  return (

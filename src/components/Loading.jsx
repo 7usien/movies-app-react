@@ -4,8 +4,6 @@ import React from 'react';
 import LoadingImg from '../images/loading.gif';
 
 const Loading = ({ loadingState, errorState, children }) => {
- console.log(loadingState, errorState);
-
  return (
   <>
    {loadingState && !errorState.length > 0 ? (
