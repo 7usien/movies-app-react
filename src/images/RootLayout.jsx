@@ -5,6 +5,7 @@ import React, { useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import Footer from '../components/Footer';
 import SwitchTheme from '../components/SwitchTheme';
+import { SearchContextProvider } from '../context/SearchContext';
 import SearchBar from '../pages/home/SearchBar';
 import { darkTheme, lightTheme } from '../theme/theme';
 import Header from './../components/Header';
@@ -27,7 +28,9 @@ const RootLayout = () => {
      <SwitchTheme toggleTheme={toggleHandler} />
 
      <section className='content'>
-      <Outlet />
+      <SearchContextProvider>
+       <Outlet />
+      </SearchContextProvider>
      </section>
     </Container>
    </Box>

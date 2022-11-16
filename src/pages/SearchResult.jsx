@@ -12,16 +12,14 @@ const SearchResult = () => {
  const { shadows, palette } = useTheme();
  const { searchInput, setSearchInput } = useContext(SearchContext);
 
- console.log(searchInput);
  const [movieList, setMovieList] = useState({});
 
  const { loading, error, movieListDb } = useFetch(`S=${searchInput}`);
 
  useEffect(() => {
   setMovieList(movieListDb);
- }, [searchInput]);
+ }, []);
 
- console.log(searchInput);
 
  return (
   <>

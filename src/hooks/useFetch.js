@@ -30,7 +30,13 @@ const useFetch = (query, movieId) => {
   }
  };
  useEffect(() => {
-  fecthData();
+  const timer = setTimeout(() => {
+   fecthData();
+  }, 1500);
+
+  return () => {
+   clearTimeout(timer);
+  };
  }, [searchInput]);
 
  return { movieListDb, loading, error };
