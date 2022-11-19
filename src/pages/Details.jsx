@@ -22,7 +22,7 @@ import LocalAtmIcon from '@mui/icons-material/LocalAtm';
 import PublicIcon from '@mui/icons-material/Public';
 import LocalMoviesIcon from '@mui/icons-material/LocalMovies';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-
+import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import { FavContext } from '../context/FavContext';
 
 const Details = () => {
@@ -58,16 +58,13 @@ const Details = () => {
    setFavList((prev) => [...prev, { id: eleId, isFav: true }]);
   }
  };
- let favState;
- console.log('isFav', isFav);
- console.log('favList', favList);
 
  useEffect(() => {
   const found = favList.some((item) => item.id === id);
   if (found) {
    setIsFav(true);
   }
- }, []);
+ }, [id, favList]);
 
  return (
   <>
@@ -118,6 +115,7 @@ const Details = () => {
          icon={<SlowMotionVideoIcon sx={{ marginRight: '5px' }} />}
         />
         <MovieItem title='About' content={Plot} />
+        <MovieItem title='time' content={Runtime} icon={<AccessTimeIcon />} />
         <MovieItem
          title='Type'
          content={Type}

@@ -1,4 +1,3 @@
-import { DarkMode } from '@mui/icons-material';
 import { Box, ThemeProvider } from '@mui/material';
 import { Container } from '@mui/system';
 import React, { useState } from 'react';
@@ -7,7 +6,6 @@ import Footer from '../components/Footer';
 import SwitchTheme from '../components/SwitchTheme';
 import { FavContextProvider } from '../context/FavContext';
 import { SearchContextProvider } from '../context/SearchContext';
-import SearchBar from '../pages/home/SearchBar';
 import { darkTheme, lightTheme } from '../theme/theme';
 import Header from './../components/Header';
 

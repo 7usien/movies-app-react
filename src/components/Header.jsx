@@ -2,7 +2,6 @@ import { Avatar, Box, Grid, Typography } from '@mui/material';
 import { Container } from '@mui/system';
 import React from 'react';
 import { Link } from 'react-router-dom';
-
 import styles from './header.module.css';
 import avatar from '../images/avatar.png';
 
@@ -22,6 +21,7 @@ const Header = () => {
        </Typography>
       </Link>
      </Grid>
+
      <Grid item>
       <Avatar src={avatar} alt='avtar' />
      </Grid>

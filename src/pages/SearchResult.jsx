@@ -1,16 +1,13 @@
 import React, { useEffect, useState, useContext } from 'react';
 import MovieCard from './../components/MovieCard';
 import { Box, Grid, Typography } from '@mui/material';
-import { useTheme } from '@mui/material/styles';
 import SearchBar from './home/SearchBar';
 import Loading from '../components/Loading';
 import useFetch from './../hooks/useFetch';
-import { SearchContextProvider } from '../context/SearchContext';
 import { SearchContext } from './../context/SearchContext';
 import man from '../images/img.png';
 
 const SearchResult = () => {
- const { shadows, palette } = useTheme();
  const { searchInput, setSearchInput } = useContext(SearchContext);
 
  const [movieList, setMovieList] = useState({});
@@ -20,7 +17,7 @@ const SearchResult = () => {
   if (searchInput.length > 1) {
    setMovieList(movieListDb);
   }
- }, [searchInput]);
+ }, [searchInput, movieListDb]);
 
  return (
   <>

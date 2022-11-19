@@ -14,7 +14,7 @@ const useFetch = (query, movieId) => {
    setLoading(true);
    setError('');
    const res = await fetch(
-    `http://www.omdbapi.com/?apikey=${process.env.REACT_APP_API_KEY}&${query}`
+    `https://www.omdbapi.com/?apikey=${process.env.REACT_APP_API_KEY}&${query}`
    );
 
    const data = await res.json();
@@ -25,9 +25,7 @@ const useFetch = (query, movieId) => {
     setLoading(false);
     setError(data.Error);
    }
-  } catch (error) {
-   console.log(error.message);
-  }
+  } catch (error) {}
  };
 
  const { id } = useParams();
