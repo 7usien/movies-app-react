@@ -24,6 +24,7 @@ const MovieCard = ({ movieInfo }) => {
     <Card
      sx={{
       position: 'relative',
+      borderRadius: '1rem',
       ':hover': {
        boxShadow: shadows[6],
       },

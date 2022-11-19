@@ -1,12 +1,13 @@
 import React, { useEffect, useState, useContext } from 'react';
 import MovieCard from './../components/MovieCard';
-import { Box, Grid } from '@mui/material';
+import { Box, Grid, Typography } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import SearchBar from './home/SearchBar';
 import Loading from '../components/Loading';
 import useFetch from './../hooks/useFetch';
 import { SearchContextProvider } from '../context/SearchContext';
 import { SearchContext } from './../context/SearchContext';
+import man from '../images/img.png';
 
 const SearchResult = () => {
  const { shadows, palette } = useTheme();
@@ -15,12 +16,9 @@ const SearchResult = () => {
  const [movieList, setMovieList] = useState({});
  const { loading, error, movieListDb } = useFetch(`S=${searchInput}`);
 
- console.log(searchInput);
-
  useEffect(() => {
   if (searchInput.length > 1) {
    setMovieList(movieListDb);
-  } else {
   }
  }, [searchInput]);
 
@@ -39,6 +37,21 @@ const SearchResult = () => {
       ))}
     </Grid>
    </Loading>
+
+   {!searchInput && (
+    <Grid container justifyContent='center' alignItems='center'>
+     <Grid item>
+      <Typography variant='h5' component='h3' textAlign='center'>
+       Ops try to search for somehting new ..
+      </Typography>
+      <img
+       style={{ display: 'block', margin: '0 auto', textAlign: 'center' }}
+       src={man}
+       alt=''
+      />
+     </Grid>
+    </Grid>
+   )}
   </>
  );
 };

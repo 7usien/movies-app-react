@@ -5,6 +5,7 @@ import React, { useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import Footer from '../components/Footer';
 import SwitchTheme from '../components/SwitchTheme';
+import { FavContextProvider } from '../context/FavContext';
 import { SearchContextProvider } from '../context/SearchContext';
 import SearchBar from '../pages/home/SearchBar';
 import { darkTheme, lightTheme } from '../theme/theme';
@@ -18,23 +19,25 @@ const RootLayout = () => {
 
  return (
   <SearchContextProvider>
-   <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
-    <Header />
+   <FavContextProvider>
+    <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
+     <Header />
 
-    <Box
-     sx={{ backgroundColor: 'background.body', color: 'text.color' }}
-     minHeight='100vh'
-    >
-     <Container>
-      <SwitchTheme toggleTheme={toggleHandler} />
+     <Box
+      sx={{ backgroundColor: 'background.body', color: 'text.color' }}
+      minHeight='100vh'
+     >
+      <Container>
+       <SwitchTheme toggleTheme={toggleHandler} />
 
-      <section className='content'>
-       <Outlet />
-      </section>
-     </Container>
-    </Box>
-    <Footer />
-   </ThemeProvider>
+       <section className='content'>
+        <Outlet />
+       </section>
+      </Container>
+     </Box>
+     <Footer />
+    </ThemeProvider>
+   </FavContextProvider>
   </SearchContextProvider>
  );
 };

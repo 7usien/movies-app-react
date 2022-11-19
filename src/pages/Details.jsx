@@ -8,15 +8,7 @@ import useFetch from './../hooks/useFetch';
 import MovieItem from '../components/MovieItem';
 
 // MUI
-import {
- Card,
- CardMedia,
- Grid,
- List,
- ListItem,
- Rating,
- Typography,
-} from '@mui/material';
+import { Card, CardMedia, Grid, Rating } from '@mui/material';
 
 import Fab from '@mui/material/Fab';
 import { Box } from '@mui/system';
@@ -25,20 +17,18 @@ import SlowMotionVideoIcon from '@mui/icons-material/SlowMotionVideo';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import GroupIcon from '@mui/icons-material/Group';
 import LanguageIcon from '@mui/icons-material/Language';
-import EighteenUpRatingIcon from '@mui/icons-material/EighteenUpRating';
 import StarIcon from '@mui/icons-material/Star';
 import LocalAtmIcon from '@mui/icons-material/LocalAtm';
 import PublicIcon from '@mui/icons-material/Public';
 import LocalMoviesIcon from '@mui/icons-material/LocalMovies';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import { SearchContext } from './../context/SearchContext';
-import { Scale } from '@mui/icons-material';
+
+import { FavContext } from '../context/FavContext';
 
 const Details = () => {
  const { id } = useParams();
-
- const { favicon, setFavicon } = useContext(SearchContext);
-
+ const { favList, setFavList } = useContext(FavContext);
+ const [isFav, setIsFav] = useState(false);
  const { loading, error, movieListDb } = useFetch(`i=${id}`);
 
  const {
@@ -58,8 +48,26 @@ const Details = () => {
  } = movieListDb;
 
  const faviHandler = (eleId) => {
-  setFavicon({ id: eleId, isFav: !favicon.isFav });
+  const isFound = favList.some((ele) => ele.id === eleId);
+
+  if (isFound) {
+   setIsFav(false);
+   setFavList((prev) => prev.filter((ele) => ele.id !== eleId));
+  } else {
+   setIsFav(true);
+   setFavList((prev) => [...prev, { id: eleId, isFav: true }]);
+  }
  };
+ let favState;
+ console.log('isFav', isFav);
+ console.log('favList', favList);
+
+ useEffect(() => {
+  const found = favList.some((item) => item.id === id);
+  if (found) {
+   setIsFav(true);
+  }
+ }, []);
 
  return (
   <>
@@ -84,24 +92,14 @@ const Details = () => {
           display: 'block',
          }}
         >
-         {favicon.isFav ? (
-          <FavoriteBorderIcon
-           sx={{
-            display: 'block',
-            width: '100%',
-            height: '100%',
-           }}
+         {isFav ? (
+          <FavoriteIcon
            onClick={() => {
             faviHandler(imdbID);
            }}
           />
          ) : (
-          <FavoriteIcon
-           sx={{
-            display: 'block',
-            width: '100%',
-            height: '100%',
-           }}
+          <FavoriteBorderIcon
            onClick={() => {
             faviHandler(imdbID);
            }}
