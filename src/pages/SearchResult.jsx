@@ -13,31 +13,32 @@ const SearchResult = () => {
  const { searchInput, setSearchInput } = useContext(SearchContext);
 
  const [movieList, setMovieList] = useState({});
-
  const { loading, error, movieListDb } = useFetch(`S=${searchInput}`);
 
- useEffect(() => {
-  setMovieList(movieListDb);
- }, []);
+ console.log(searchInput);
 
+ useEffect(() => {
+  if (searchInput.length > 1) {
+   setMovieList(movieListDb);
+  } else {
+  }
+ }, [searchInput]);
 
  return (
   <>
-   <SearchContextProvider>
-    <Box mb='2rem'>
-     <SearchBar searchInput={searchInput} setSearchInput={setSearchInput} />
-    </Box>
-    <Loading loadingState={loading} errorState={error}>
-     <Grid container spacing={2} columns={12}>
-      {movieListDb.Search &&
-       movieListDb.Search.map((movie) => (
-        <Grid item key={movie.imdbID} xs={6} sm={4} md={3}>
-         <MovieCard movieInfo={movie} />
-        </Grid>
-       ))}
-     </Grid>
-    </Loading>
-   </SearchContextProvider>
+   <Box mb='2rem'>
+    <SearchBar searchInput={searchInput} setSearchInput={setSearchInput} />
+   </Box>
+   <Loading loadingState={loading} errorState={error}>
+    <Grid container spacing={2} columns={12}>
+     {movieListDb.Search &&
+      movieListDb.Search.map((movie) => (
+       <Grid item key={movie.imdbID} xs={6} sm={4} md={3}>
+        <MovieCard movieInfo={movie} />
+       </Grid>
+      ))}
+    </Grid>
+   </Loading>
   </>
  );
 };

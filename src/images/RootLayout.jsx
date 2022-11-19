@@ -17,25 +17,25 @@ const RootLayout = () => {
  };
 
  return (
-  <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
-   <Header />
+  <SearchContextProvider>
+   <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
+    <Header />
 
-   <Box
-    sx={{ backgroundColor: 'background.body', color: 'text.color' }}
-    minHeight='100vh'
-   >
-    <Container>
-     <SwitchTheme toggleTheme={toggleHandler} />
+    <Box
+     sx={{ backgroundColor: 'background.body', color: 'text.color' }}
+     minHeight='100vh'
+    >
+     <Container>
+      <SwitchTheme toggleTheme={toggleHandler} />
 
-     <section className='content'>
-      <SearchContextProvider>
+      <section className='content'>
        <Outlet />
-      </SearchContextProvider>
-     </section>
-    </Container>
-   </Box>
-   <Footer />
-  </ThemeProvider>
+      </section>
+     </Container>
+    </Box>
+    <Footer />
+   </ThemeProvider>
+  </SearchContextProvider>
  );
 };
 

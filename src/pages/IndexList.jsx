@@ -5,9 +5,7 @@ import SearchResult from './SearchResult';
 const IndexList = () => {
  return (
   <>
-   <SearchContextProvider>
-    <SearchResult />
-   </SearchContextProvider>
+   <SearchResult />
   </>
  );
 };

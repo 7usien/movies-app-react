@@ -1,8 +1,9 @@
 import { useState, useEffect, useContext } from 'react';
 import { SearchContext } from './../context/SearchContext';
+import { useParams } from 'react-router-dom';
 
 const useFetch = (query, movieId) => {
- const [movieListDb, setMovieListDb] = useState([]);
+ const { movieListDb, setMovieListDb } = useContext(SearchContext);
  const [loading, setLoading] = useState(false);
  const [error, setError] = useState('');
 
@@ -23,20 +24,24 @@ const useFetch = (query, movieId) => {
    } else {
     setLoading(false);
     setError(data.Error);
-    throw new Error(data.Error);
    }
   } catch (error) {
    console.log(error.message);
   }
  };
- useEffect(() => {
-  const timer = setTimeout(() => {
-   fecthData();
-  }, 1500);
 
-  return () => {
-   clearTimeout(timer);
-  };
+ const { id } = useParams();
+
+ useEffect(() => {
+  if (searchInput || id) {
+   const timer = setTimeout(() => {
+    fecthData();
+   }, 500);
+
+   return () => {
+    clearTimeout(timer);
+   };
+  }
  }, [searchInput]);
 
  return { movieListDb, loading, error };

@@ -6,7 +6,7 @@ import LoadingImg from '../images/loading.gif';
 const Loading = ({ loadingState, errorState, children }) => {
  return (
   <>
-   {loadingState && !errorState.length > 0 ? (
+   {loadingState ? (
     <Grid container justifyContent='center' alignItems='center'>
      <Grid item>
       <CircularProgress />
@@ -14,7 +14,6 @@ const Loading = ({ loadingState, errorState, children }) => {
     </Grid>
    ) : errorState.length > 0 ? (
     <Alert severity='error' sx={{ textAlign: 'center' }}>
-     {' '}
      {errorState}
     </Alert>
    ) : (
